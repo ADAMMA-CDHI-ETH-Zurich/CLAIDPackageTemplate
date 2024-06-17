@@ -54,7 +54,7 @@ android_package: check_claid_sdk
 
 .PHONY: generate_dart_proto
 generate_dart_proto:
-@if [ $(HAS_DATATYPES) -gt 0 ]; then \
+	@if [ $(HAS_DATATYPES) -gt 0 ]; then \
 		echo "Generating dart protobuf files";\
 		rm -fr $(FLUTTER_DIR)/lib/generated\
 		mkdir -p $(FLUTTER_DIR)/lib/generated\
