@@ -12,7 +12,7 @@ HAS_DATATYPES := $(shell find $(DATATYPES_DIR) -type f -name *.proto | wc -l)
 ANDROID_CPP_PROTO_DIR := $(MAKEFILE_DIR)src/android/claid_package/${package_name}/src/main/cpp/generated_datatypes
 
 ANDROID_DIR := $(MAKEFILE_DIR)src/android/claid_package
-AAR_DIR := $(ANDROID_DIR)/claid/build/outputs/aar
+AAR_DIR := $(ANDROID_DIR)/${package_name}/build/outputs/aar
 
 FLUTTER_DIR := $(MAKEFILE_DIR)src/flutter/claid_package
 
@@ -69,4 +69,4 @@ generate_dart_proto:
 	
 flutter_package: check_claid_sdk generate_dart_proto android_package
 	echo "Building flutter package"
-	cp $(AAR_DIR)/claid-debug.aar $(FLUTTER_DIR)/android/libs/
+	cp $(AAR_DIR)/${package_name}-debug.aar $(FLUTTER_DIR)/android/libs/
