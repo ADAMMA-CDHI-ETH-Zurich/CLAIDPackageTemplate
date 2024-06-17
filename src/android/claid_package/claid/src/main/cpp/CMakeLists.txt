@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(SmartInhalerPackage)
+project(${package_name})
 
 if(NOT DEFINED ENV{CLAID_SDK_HOME})
     message(FATAL_ERROR "CLAID SDK not found! Make sure to install CLAID SDK and set CLAID_SDK_HOME environment variable.")
@@ -17,7 +17,7 @@ add_library( CLAID SHARED IMPORTED )
 set_target_properties( CLAID PROPERTIES IMPORTED_LOCATION $ENV{CLAID_SDK_HOME}/bin/android/native/${ANDROID_ABI}/libclaid_capi_android.so )
 
 # Add executable and link libraries
-add_library(SmartInhalerPackage 
+add_library(${package_name} 
     SHARED
     main.cpp 
 ${PROTO_SRCS})
@@ -39,7 +39,7 @@ find_library( # Sets the name of the path variable.
         android )
 
 target_link_libraries( # Specifies the target library.
-        SmartInhalerPackage
+        ${package_name}
         # Links the target library to the log library
         # included in the NDK.
 
