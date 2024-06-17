@@ -54,9 +54,17 @@ android_package: check_claid_sdk
 
 .PHONY: generate_dart_proto
 generate_dart_proto:
-	mkdir -p $(FLUTTER_DIR)/lib/generated
-	protoc -I$(DATATYPES_DIR)/ --dart_out=$(FLUTTER_DIR)/lib/generated \
-		$(DATATYPES_DIR)/*.proto\
+@if [ $(HAS_DATATYPES) -gt 0 ]; then \
+		echo "Generating dart protobuf files";\
+		rm -fr $(FLUTTER_DIR)/lib/generated\
+		mkdir -p $(FLUTTER_DIR)/lib/generated\
+		protoc -I$(DATATYPES_DIR)/ --dart_out=$(FLUTTER_DIR)/lib/generated \
+			$(DATATYPES_DIR)/*.proto\
+	else \
+		echo "Info: No datatypes found to process."; \
+	fi
+
+	
 
 	
 flutter_package: check_claid_sdk generate_dart_proto android_package
