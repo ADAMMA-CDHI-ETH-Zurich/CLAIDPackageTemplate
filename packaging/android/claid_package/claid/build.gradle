@@ -54,8 +54,10 @@ android {
 
     sourceSets{
 
- 
+
         main.proto.srcDirs += "../../../../datatypes/"
+        main.java.srcDirs += ["../../../../src/android/java"]
+        main.manifest.srcFile '../../../../src/android/AndroidManifest.xml'
         // main.jniLibs.srcDirs = ['../blobs/']
         main.resources.srcDirs += ['src/main/xml']
 
