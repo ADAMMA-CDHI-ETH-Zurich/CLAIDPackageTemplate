@@ -72,14 +72,17 @@ android {
         minSdkVersion 21
     }
 
-    // sourceSets {
-    //     main.proto.srcDirs += "src/proto"
-    //     main.jniLibs.srcDirs = ['../blobs/android']
-    // }
+    sourceSets{
+        main.proto.srcDirs += "src/main/proto"
+        main.manifest.srcFile 'src/main/AndroidManifest.xml'
+        main.assets.srcDirs += "src/main/claid_package_assets"
+    }
 
-
-
-  
+    externalNativeBuild {
+        cmake {
+            path file('src/main/cpp/CMakeLists.txt')
+        }
+    }  
 }
 
 
@@ -91,6 +94,5 @@ dependencies
     api 'io.grpc:grpc-okhttp:1.59.0' // CURRENT_GRPC_VERSION
     api 'javax.annotation:javax.annotation-api:1.3.2'
     api 'androidx.work:work-runtime:2.8.0'
-    api (name: '${package_name}', ext: 'aar')
 }
 
