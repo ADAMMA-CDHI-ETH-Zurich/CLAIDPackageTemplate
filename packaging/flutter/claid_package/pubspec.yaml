@@ -1,5 +1,5 @@
 name: smart_inhaler
-description: CLAID is a flexible and modular middleware framework based on transparent computing. CLAID allows to build applications for mobile (Android, WearOS, iOS*) and regular (Linux, macOS) operating systems, enabling seamless communication between individual Modules implemented in different programming languages (C++, Java, Dart, Python) running on all these operating systems. Existing CLAID Modules allow to effortlessly implement modular machine learning and data collection application with little-to-no coding.
+description: Your description
 version: 0.0.5
 homepage: https://claid.ethz.ch
 
@@ -16,8 +16,7 @@ dependencies:
   path: ^1.8.3
   plugin_platform_interface: ^2.0.2
   protobuf: ^3.1.0
-  claid:
-    path: /home/lastchance/Desktop/CLAID/dispatch/dart/claid/
+  claid: ^0.6.1
 
 dev_dependencies:
   ffigen: ^6.1.2
