@@ -95,6 +95,6 @@ flutter_package: check_claid_sdk
 	@echo "Building flutter package";
 	rm -fr build/flutter
 	mkdir -p build/flutter
-	cp -L -r $(FLUTTER_DIR) $(MAKEFILE_DIR)build/flutter/${package_name}
+	cp -L -r $(FLUTTER_DIR) $(MAKEFILE_DIR)build/flutter/claid_package
 	@echo "Built flutter package";
 	
