@@ -53,12 +53,9 @@ android {
     }
 
     sourceSets{
-
- 
-        main.proto.srcDirs += "../../../../datatypes/"
-        // main.jniLibs.srcDirs = ['../blobs/']
-        main.resources.srcDirs += ['src/main/xml']
-
+        main.proto.srcDirs += "src/main/proto"
+        main.manifest.srcFile 'src/main/AndroidManifest.xml'
+        main.assets.srcDirs += "src/main/claid_package_assets"
     }
 
     compileOptions {
@@ -84,7 +81,6 @@ protobuf {
         all().each { task ->
             task.builtins {
                 java { }
-                cpp {}
             }
             task.plugins {
                 grpc { // Options added to --grpc_out
@@ -103,5 +99,5 @@ dependencies {
     api "com.google.protobuf:protobuf-java:3.24.0"
     api "com.google.protobuf:protobuf-java-util:3.24.0"
 
-    compileOnly files('libs/claid-debug.aar')
+    implementation 'ch.claid:claid:0.6'
 }

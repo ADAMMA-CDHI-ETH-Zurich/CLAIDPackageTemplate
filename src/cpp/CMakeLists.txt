@@ -24,25 +24,27 @@ ${PROTO_SRCS})
 
 
 
-find_library( # Sets the name of the path variable.
-        log-lib
+if(ANDROID)
+        find_library( # Sets the name of the path variable.
+                log-lib
 
-        # Specifies the name of the NDK library that
-        # you want CMake to locate.
-        log)
+                # Specifies the name of the NDK library that
+                # you want CMake to locate.
+                log)
 
-find_library( # Sets the name of the path variable.
-        android-lib
+        find_library( # Sets the name of the path variable.
+                android-lib
 
-        # Specifies the name of the NDK library that
-        # you want CMake to locate.
-        android )
+                # Specifies the name of the NDK library that
+                # you want CMake to locate.
+                android )
 
-target_link_libraries( # Specifies the target library.
-        ${package_name}
-        # Links the target library to the log library
-        # included in the NDK.
+        target_link_libraries( # Specifies the target library.
+                ${package_name}
+                # Links the target library to the log library
+                # included in the NDK.
 
-        ${log-lib}
-        ${android-lib}
-        ${CLAID})
+                ${log-lib}
+                ${android-lib}
+                ${CLAID})
+endif()
