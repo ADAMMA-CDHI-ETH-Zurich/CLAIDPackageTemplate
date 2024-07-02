@@ -1,4 +1,4 @@
-name: smart_inhaler
+name: ${package_name}
 description: Your description
 version: 0.0.5
 homepage: https://claid.ethz.ch
