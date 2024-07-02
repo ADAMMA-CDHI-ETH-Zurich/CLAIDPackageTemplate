@@ -81,6 +81,25 @@ android {
 }
 
 
+protobuf {
+    protoc { artifact = 'com.google.protobuf:protoc:3.24.0' }
+    plugins {
+        grpc { artifact = 'io.grpc:protoc-gen-grpc-java:1.59.0' // CURRENT_GRPC_VERSION
+        }
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java { }
+            }
+            task.plugins {
+                grpc { // Options added to --grpc_out
+                }
+            }
+        }
+    }
+}
+
 dependencies
 {
     implementation 'androidx.appcompat:appcompat:1.6.1'
