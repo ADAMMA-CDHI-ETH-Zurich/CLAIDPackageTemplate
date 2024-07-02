@@ -99,5 +99,5 @@ dependencies {
     api "com.google.protobuf:protobuf-java:3.24.0"
     api "com.google.protobuf:protobuf-java-util:3.24.0"
 
-    implementation 'ch.claid:claid:0.6'
+    implementation 'ch.claid:claid:0.6.1'
 }
