@@ -71,9 +71,9 @@ generate_dart_proto:
 	
 flutter_package: check_claid_sdk
 	@if [ -n "$(CLAID_SDK_HOME)" ]; then \
-		@echo "Building Android package..."; \
+		echo "Building Flutter package..."; \
 	else \
-		@echo "Cannot build Flutter package without CLAID SDK"; \
+		echo "Cannot build Flutter package without CLAID SDK"; \
 		false; \
 	fi
 
