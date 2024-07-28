@@ -29,7 +29,7 @@ endif
 
 android_package: check_claid_sdk
 	@if [ -n "$(CLAID_SDK_HOME)" ]; then \
-		@echo "Building Android package..."; \
+		echo "Building Android package..."; \
 	else \
 		@echo "Cannot build Android package without CLAID SDK"; \
 		false; \
@@ -39,7 +39,7 @@ android_package: check_claid_sdk
 
 
 	@if [ $(HAS_DATATYPES) -gt 0 ]; then \
-		@echo "Generating protobuf files";\
+		echo "Generating protobuf files";\
 		rm -fr $(ANDROID_CPP_PROTO_DIR); \
 		mkdir -p $(ANDROID_CPP_PROTO_DIR); \
 		protoc --cpp_out=$(ANDROID_CPP_PROTO_DIR) --proto_path=$(DATATYPES_DIR) $(DATATYPES_DIR)/*.proto; \
@@ -63,7 +63,7 @@ generate_dart_proto:
 		protoc -I$(DATATYPES_DIR)/ --dart_out=$(FLUTTER_DIR)/lib/generated \
 			$(DATATYPES_DIR)/*.proto\
 	else \
-		@echo "Info: No datatypes found to process."; \
+		echo "Info: No datatypes found to process."; \
 	fi
 
 	
@@ -89,7 +89,7 @@ flutter_package: check_claid_sdk
 		protoc -I$(DATATYPES_DIR)/ --dart_out=$(FLUTTER_DART_PROTO_DIR)\
 			$(DATATYPES_DIR)/*.proto;\
 	else \
-		@echo "Info: No datatypes found to process."; \
+		echo "Info: No datatypes found to process."; \
 	fi
 
 	@echo "Building flutter package";
