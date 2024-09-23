@@ -5,11 +5,47 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+def is_claid_developer = false  // Initialize the flag
+def homeDir = System.getProperty("user.home")
+def credentialsFile = file("${homeDir}/.claid/developer_settings.txt")
+
+def properties = new Properties()
+
+if (!credentialsFile.exists()) {
+    credentialsFile = file("developer_settings.txt")
+}
+
+if (credentialsFile.exists()) {
+    credentialsFile.withInputStream { stream ->
+        properties.load(stream)
+    }
+    is_claid_developer = true  // Set to true if credentials file is found
+    println("You are a CLAID developer!")
+
+} else {
+    is_claid_developer = false  // Keep false if file is not found
+}
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
+
+        // Conditionally add the Maven repository based on the presence of the credentials file
+        if (is_claid_developer) {
+            maven {
+                name = "CLAID SDK Repo"  // Give the repository a name
+                url = properties.getProperty("repo_url") ?: "http://invalid_host_in_claid_developer_settings_file" // Read the URL from the properties file
+                allowInsecureProtocol = true
+                credentials {
+                    username = properties.getProperty("developer_name") ?: ""
+                    password = properties.getProperty("developer_password") ?: ""
+                    println(properties.getProperty("developer_password"))
+                }
+            }
+        }
     }
 }
 rootProject.name = "${package_name}"
