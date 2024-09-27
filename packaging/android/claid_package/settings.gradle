@@ -42,7 +42,6 @@ dependencyResolutionManagement {
                 credentials {
                     username = properties.getProperty("developer_name") ?: ""
                     password = properties.getProperty("developer_password") ?: ""
-                    println(properties.getProperty("developer_password"))
                 }
             }
         }
