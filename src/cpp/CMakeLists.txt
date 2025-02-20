@@ -10,7 +10,7 @@ file(GLOB_RECURSE PROTO_SRC_FILES ${CMAKE_CURRENT_LIST_DIR}/generated_datatypes/
 file(GLOB_RECURSE PROTO_HDR_FILES ${CMAKE_CURRENT_LIST_DIR}/generated_datatypes/*.pb.hh)
 
 # Include the generated files
-include_directories(${PROTO_HDR_FILES})
+include_directories(${PROTO_HDR_FILES} $ENV{CLAID_SDK_HOME}/include/core)
 
 add_library( CLAID SHARED IMPORTED )
 # You can define two import-locations: one for debug and one for release.
